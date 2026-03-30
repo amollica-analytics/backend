@@ -18,6 +18,19 @@ app.listen(PORT, () => {
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+    res.json({
+        message: "Task Management API",
+        status: "Running",
+        endpoints: {
+            health: "/health",
+            register: "/api/register",
+            login: "/api/login",
+            tasks: "/api/tasks"
+        }
+    });
+});
+
 // Test database connection
 async function testConnection() {
     try {
