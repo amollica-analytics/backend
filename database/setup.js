@@ -58,6 +58,19 @@ const Task = db.define('Task', {
 User.hasMany(Task, { foreignKey: 'userId' });
 Task.belongsTo(User, { foreignKey: 'userId' });
 
+async function initializeDatabase() {
+  try {
+    await db.authenticate();
+    console.log('Database connected successfully');
+    await db.sync({ force: false });
+    console.log('Database synchronized successfully');
+  } catch (err) {
+    console.error('Database setup failed:', err);
+  }
+}
+
+initializeDatabase();
+
 module.exports = {
     db,
     User,
