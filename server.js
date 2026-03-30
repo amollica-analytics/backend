@@ -10,6 +10,10 @@ const app = express();
 // PORT must use env variable
 const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 // Middleware
 app.use(express.json());
 app.use(cors());
