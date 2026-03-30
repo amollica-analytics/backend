@@ -40,6 +40,16 @@ app.get('/', (req, res) => {
   });
 });
 
+// New Endpoint
+app.get('/api/info', (req, res) => {
+    res.json({
+        api: "Task Management API",
+        version: "1.0",
+        status: "Running",
+        time: new Date()
+    });
+});
+
 // Health check
 app.get('/health', (req, res) => res.json({ status: 'OK', timestamp: new Date() }));
 
